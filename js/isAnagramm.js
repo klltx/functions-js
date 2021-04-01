@@ -1,3 +1,6 @@
 function isAnagramm(str1, str2){
-    return str1.toLowerCase().trim().split('').reverse().join('') === str2.toLowerCase().trim();
+    const sortChars = function(str){
+        return str.toLowerCase().trim().split('').sort().join('');
+    };
+    return sortChars(str1) === sortChars(str2);
 }

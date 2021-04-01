@@ -1,17 +1,32 @@
-let arr = [];
-let i = 0;
+'use strict';
 
-for(let i = 0; arr[arr.length - 1] !== '0'; i++){
-    arr.push(prompt('Введите строку ' + i));
-}
+const stringArray = document.querySelector('#stringArray'),
+  btnFindPopularString = document.querySelector('#btnFindPopularString'),
+  taskPopularChar = document.querySelector('#taskPopularChar'),
+  newChar = document.querySelector('#newChar'),
+  btnChangePopularChar = document.querySelector('#btnChangePopularChar'),
+  anagramFirstString = document.querySelector('#anagramFirstString'),
+  anagramSecondString = document.querySelector('#anagramSecondString'),
+  btnFindAnagram = document.querySelector('#btnFindAnagram'),
+  btnGetPopularChar = document.querySelector('#btnGetPopularChar'),
+  answerFirst = document.querySelector('#answerFirst'),
+  answerSecond = document.querySelector('#answerSecond'),
+  answerThird = document.querySelector('#answerThird'),
+  answerFourth = document.querySelector('#answerFourth');
 
-console.log('Самая длинная строка: ' + longestString(arr));
 
-console.log('Наиболее встречающийся символ: ' + popularChar(longestString(arr)));
+btnFindPopularString.addEventListener('click', () => {
+    answerFirst.innerHTML = `Ответ: ${longestString(stringArray.value.trim().split(','))}`;
+});
 
-console.log('Замена наиболее встречающегося символа: ' + swapChar(longestString(arr), prompt('Символ для замены')));
+btnGetPopularChar.addEventListener('click', () => {
+    answerSecond.innerHTML = `Ответ: ${popularChar(taskPopularChar.value)}`;
+});
 
-let str1 = prompt('Строка анаграмма 1: ');
-let str2 = prompt('Строка анаграмма 2: ');
+btnChangePopularChar.addEventListener('click', () => {
+    answerThird.innerHTML = `Ответ: ${swapChar(taskPopularChar.value, newChar.value)}`;
+});
 
-console.log(str1 + ' ' + str2 + ': ' + isAnagramm(str1,str2));
+btnFindAnagram.addEventListener('click', () => {
+    answerFourth.innerHTML = `Ответ: ${isAnagramm(anagramFirstString.value, anagramSecondString.value)}`;
+});
